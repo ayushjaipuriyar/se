@@ -1,6 +1,6 @@
 import React from 'react';
-import Logo from '../../assets/img/logo.png';
-import Avatar from '../../assets/img/avatar.png';
+import Logo from '../assets/img/logo.png';
+import Avatar from '../assets/img/avatar.png';
 import { FiShoppingCart } from 'react-icons/fi';
 const Header = () => {
 	return (
