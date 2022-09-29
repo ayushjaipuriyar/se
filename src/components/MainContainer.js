@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import HeroContainer from './HeroContainer';
 
 const MainContainer = () => {
-  return (
-    <div>MainContainer</div>
-  )
-}
+	return (
+		<div className='w-full h-auto flex flex-col items-center justify-center'>
+			<HeroContainer /> 
+		</div>
+	);
+};
 
-export default MainContainer
+export default MainContainer;
