@@ -72,7 +72,7 @@ const HeroContainer = () => {
 					className='ml-auto h-370 lg:w-auto lg:h-685 rounded-full '
 					alt='H'
 				/>
-				<div className='w-full h-full absolute top-0 left-0 flex items-center justify-center bg py-4 gap-2 flex-wrap'>
+				<div className='w-full h-full absolute top-0 left-0 flex items-center justify-center bg py-4 gap-2 flex-wrap lg:px-52 '>
 					{/* <div className='w-190 bg-cardOverlay backdrop-blur-md rounded-3xl p-4 flex flex-col items-center justify-center'>
 						<img alt='ice-cream' src={i1} className='w-40 -mt-20' />
 						<p className='text-lg font-semibold text-textColor mt-4'>

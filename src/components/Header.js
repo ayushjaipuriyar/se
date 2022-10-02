@@ -28,13 +28,14 @@ const Header = () => {
 	const logout = () => {
 		setisMenu(false);
 		localStorage.clear();
+		console.log("Clearing maybe");
 		dispatch({
 			type: actionType.SET_USER,
 			user: null,
 		});
 	};
 	return (
-		<header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16'>
+		<header className='fixed z-50 w-screen p-3 px-4 md:p-6 md:px-16 bg-primary'>
 			{/* Desktop */}
 			<div className='hidden md:flex w-full h-full items-center justify-between '>
 				<Link to={'/'} className='flex items-center gap-2'>
@@ -84,7 +85,9 @@ const Header = () => {
 							>
 								{user && user.email === 'ayushjaipuriyar21@gmail.com' && (
 									<Link to={'/createItem'}>
-										<p className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'>
+										<p className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base' 
+										onClick={()=>setisMenu(false)} 
+										>
 											New Item <FiPlus />
 										</p>
 									</Link>
@@ -134,16 +137,16 @@ const Header = () => {
 								</Link>
 							)}
 							<ul className='flex flex-col'>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'>
+								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
 									Home
 								</li>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'>
+								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
 									Menu
 								</li>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'>
+								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
 									About Us{' '}
 								</li>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'>
+								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
 									Service
 								</li>
 							</ul>
@@ -158,7 +161,7 @@ const Header = () => {
 					)}
 				</div>
 			</div>
-		</header>
+		</header> 
 	);
 };
 
