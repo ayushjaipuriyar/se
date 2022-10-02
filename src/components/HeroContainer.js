@@ -1,8 +1,38 @@
 import React from 'react';
-
+import i1 from '../assets/img/i1.png';
+const heroData = [
+	{
+		id: 1,
+		name: 'Icecream',
+		dsc: 'Chocolate & Vanilla',
+		price: '5.55',
+		imgSrc: i1,
+	},
+	{
+		id: 2,
+		name: 'Icecream',
+		dsc: 'Chocolate & Vanilla',
+		price: '5.55',
+		imgSrc: i1,
+	},
+	{
+		id: 3,
+		name: 'Icecream',
+		dsc: 'Chocolate & Vanilla',
+		price: '5.55',
+		imgSrc: i1,
+	},
+	{
+		id: 5,
+		name: 'Icecream',
+		dsc: 'Chocolate & Vanilla',
+		price: '5.55',
+		imgSrc: i1,
+	},
+];
 const HeroContainer = () => {
 	return (
-		<div className='grid grid-col-1 md:grid-cols-2 gap-2 w-full h-screen'>
+		<section className='grid grid-col-1 md:grid-cols-2 gap-2 w-full' id='hero'>
 			<div className='py-2 flex-1 flex flex-col items-start justify-center gap-6'>
 				<div className='flex items-center gap-2 justify-center bg-orange-100 px-4 py-1 rounded-full'>
 					<p className='text-base text-orange-500 font-semibold'>
@@ -35,8 +65,52 @@ const HeroContainer = () => {
 					Order Now
 				</button>
 			</div>
-			<div className='py-2 bg-blue-400 flex-1'></div>
-		</div>
+			<div className='py-2 flex-1 items-center relative'>
+				{/* <div classname="w-full flex item-center justify-center "></div></div> */}
+				<img
+					src='https://i.pinimg.com/originals/6a/8e/31/6a8e31278c5dfc6cb981bf310a41b78c.jpg'
+					className='ml-auto h-370 lg:w-auto lg:h-685 rounded-full '
+					alt='H'
+				/>
+				<div className='w-full h-full absolute top-0 left-0 flex items-center justify-center bg py-4 gap-2 flex-wrap'>
+					{/* <div className='w-190 bg-cardOverlay backdrop-blur-md rounded-3xl p-4 flex flex-col items-center justify-center'>
+						<img alt='ice-cream' src={i1} className='w-40 -mt-20' />
+						<p className='text-lg font-semibold text-textColor mt-4'>
+							Ice Cream
+						</p>
+						<p className='text-sm text-lighttextGray font-semibold my-3'>
+							Chocolate & vanilla
+						</p>
+						<p className='text-sm font-semibold text-headingColor'>
+							<span className='text-xs text-red-600'>Rs.</span>330
+						</p>
+					</div> */}
+					{heroData &&
+						heroData.map((n) => (
+							<div
+								key={n.id}
+								className='md:lg:w-190  bg-cardOverlay backdrop-blur-md rounded-3xl p-4 flex flex-col items-center justify-center drop-shadow-lg'
+							>
+								<img
+									alt='ice-cream'
+									src={n.imgSrc}
+									className='w-20 lg:w-40 -mt-10 lg:-mt-20'
+								/>
+								<p className='text-base lg:text-lg font-semibold text-textColor mt-2 lg:mt-4'>
+									{n.name}
+								</p>
+								<p className='tex-[10px] lg:text-sm text-lighttextGray font-semibold my-1 lg:my-3'>
+									{n.dsc}
+								</p>
+								<p className='text-sm font-semibold text-headingColor'>
+									<span className='text-xs text-red-600'>Rs.</span>
+									{n.price}
+								</p>
+							</div>
+						))}
+				</div>
+			</div>
+		</section>
 	);
 };
 
