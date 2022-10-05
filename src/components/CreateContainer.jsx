@@ -180,7 +180,7 @@ const CreateContainer = () => {
 								<option
 									key={item.id}
 									className='text-base border-0 outline-none capitalize bg-white text-headingColor'
-									value={item.name}
+									value={item.urlParamName}
 								>
 									{item.name}
 								</option>

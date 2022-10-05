@@ -16,22 +16,26 @@ const RowContainer = ({ flag, data, scrollValue }) => {
 			className={`w-full flex items-center my-12  gap-3  scroll-smooth ${
 				flag
 					? 'overflow-x-scroll scrollbar-none'
-					: 'overflow-x-hidden flex-wrap'
+					: 'overflow-x-hidden flex-wrap justify-center'
 			}`}
 		>
-			{data &&
+			{data && data.length > 0 ? (
 				data.map((item) => (
 					<div
 						key={item.id}
 						className='w-300 min-w-[300px] md:w-340 md:min-w-[340px] h-auto shadow-md bg-cardOverlay rounded-lg p-2 backdrop-blur-lg my-12 hover:drop-shadow-lg flex flex-col items-center justify-between'
 					>
 						<div className='w-full flex items-center justify-between'>
-							<motion.img
+							<motion.div
 								whileHover={{ scale: 1.2 }}
-								src={item.imageUrl}
-								alt={item.title}
-								className='w-40 h-40 -mt-8 drop-shadow-2xl'
-							/>
+								className='w-4- h-40 -mt-8 drop-shadow-2xl'
+							>
+								<img
+									src={item.imageUrl}
+									alt={item.title}
+									className='w-full h-full object-contain'
+								/>
+							</motion.div>
 							<motion.div
 								whileTap={{ scale: 0.75 }}
 								className='w-8 h-8 rounded-full bg-red-600 cursor-pointer flex items-center justify-center hover:shadow-md'
@@ -53,7 +57,19 @@ const RowContainer = ({ flag, data, scrollValue }) => {
 							</div>
 						</div>
 					</div>
-				))}
+				))
+			) : (
+				<div className='w-full flex flex-col items-center justify-center'>
+					<img
+						src='https://media.istockphoto.com/vectors/no-result-not-found-or-404-web-page-error-illustration-vector-id846795366?k=20&m=846795366&s=170667a&w=0&h=zxv1xZyZCeVhL9q_05UuxP_8F-Dmt-4NxS3DEGhkn6I='
+						alt='Not Found'
+						className='h-420'
+					/>
+					<p className='text-xl text-headingColor font-semibold my-2'>
+						Items not available!
+					</p>
+				</div>
+			)}
 		</div>
 	);
 };
