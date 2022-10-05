@@ -1,35 +1,6 @@
 import React from 'react';
-import i1 from '../assets/img/i1.png';
-const heroData = [
-	{
-		id: 1,
-		name: 'Icecream',
-		dsc: 'Chocolate & Vanilla',
-		price: '5.55',
-		imgSrc: i1,
-	},
-	{
-		id: 2,
-		name: 'Icecream',
-		dsc: 'Chocolate & Vanilla',
-		price: '5.55',
-		imgSrc: i1,
-	},
-	{
-		id: 3,
-		name: 'Icecream',
-		dsc: 'Chocolate & Vanilla',
-		price: '5.55',
-		imgSrc: i1,
-	},
-	{
-		id: 5,
-		name: 'Icecream',
-		dsc: 'Chocolate & Vanilla',
-		price: '5.55',
-		imgSrc: i1,
-	},
-];
+import { heroData } from '../utils/data';
+
 const HeroContainer = () => {
 	return (
 		<section className='grid grid-col-1 md:grid-cols-2 gap-2 w-full' id='hero'>

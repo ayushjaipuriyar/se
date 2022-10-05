@@ -18,28 +18,7 @@ import {
 	MdAttachMoney,
 } from 'react-icons/md';
 import Loader from './Loader';
-const categories = [
-	{
-		id: 1,
-		name: 'Icecream',
-		urlParamName: 'Chocolate & Vanilla',
-	},
-	{
-		id: 2,
-		name: 'Icecream',
-		urlParamName: 'Chocolate & Vanilla',
-	},
-	{
-		id: 3,
-		name: 'Icecream',
-		urlParamName: 'Chocolate & Vanilla',
-	},
-	{
-		id: 5,
-		name: 'Icecream',
-		urlParamName: 'Chocolate & Vanilla',
-	},
-];
+import { categories } from '../utils/data';
 const CreateContainer = () => {
 	const [Title, setTitle] = useState('');
 	const [Calories, setCalories] = useState('');
