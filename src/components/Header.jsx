@@ -12,7 +12,7 @@ import { actionType } from '../context/reducer';
 const Header = () => {
 	const firebaseAuth = getAuth(app);
 	const provider = new GoogleAuthProvider();
-	const [{ user }, dispatch] = useStateValue();
+	const [{ user, cartShow }, dispatch] = useStateValue();
 	const [isMenu, setisMenu] = useState(false);
 	const login = async () => {
 		if (!user) {
@@ -28,10 +28,16 @@ const Header = () => {
 	const logout = () => {
 		setisMenu(false);
 		localStorage.clear();
-		console.log("Clearing maybe");
+		console.log('Clearing maybe');
 		dispatch({
 			type: actionType.SET_USER,
 			user: null,
+		});
+	};
+	const showCart = () => {
+		dispatch({
+			type: actionType.SET_CART_SHOW,
+			cartShow: !cartShow,
 		});
 	};
 	return (
@@ -62,7 +68,10 @@ const Header = () => {
 							Service
 						</li>
 					</motion.ul>
-					<div className='relative flex items-center justify-center'>
+					<div
+						className='relative flex items-center justify-center'
+						onClick={showCart} 
+					>
 						<FiShoppingCart className='text-textColor text-2xl cursor-pointer' />
 						<div className='absolute -top-2 -right-4 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
 							<p className='text-sm text-white font-semibold '>2</p>
@@ -85,8 +94,9 @@ const Header = () => {
 							>
 								{user && user.email === 'ayushjaipuriyar21@gmail.com' && (
 									<Link to={'/createItem'}>
-										<p className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base' 
-										onClick={()=>setisMenu(false)} 
+										<p
+											className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'
+											onClick={() => setisMenu(false)}
 										>
 											New Item <FiPlus />
 										</p>
@@ -104,7 +114,10 @@ const Header = () => {
 			</div>
 			{/* Mobile */}
 			<div className='flex items-center justify-between md:hidden w-full h-full '>
-				<div className='relative flex items-center justify-center'>
+				<div
+					className='relative flex items-center justify-center'
+					onClick={showCart}
+				>
 					<FiShoppingCart className='text-textColor text-2xl cursor-pointer' />
 					<div className='absolute -top-2 -right-4 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
 						<p className='text-sm text-white font-semibold '>2</p>
@@ -137,16 +150,28 @@ const Header = () => {
 								</Link>
 							)}
 							<ul className='flex flex-col'>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
+								<li
+									className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'
+									onClick={() => setisMenu(false)}
+								>
 									Home
 								</li>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
+								<li
+									className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'
+									onClick={() => setisMenu(false)}
+								>
 									Menu
 								</li>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
+								<li
+									className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'
+									onClick={() => setisMenu(false)}
+								>
 									About Us{' '}
 								</li>
-								<li className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2' onClick={()=>setisMenu(false)}>
+								<li
+									className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'
+									onClick={() => setisMenu(false)}
+								>
 									Service
 								</li>
 							</ul>
@@ -161,7 +186,7 @@ const Header = () => {
 					)}
 				</div>
 			</div>
-		</header> 
+		</header>
 	);
 };
 

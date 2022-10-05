@@ -5,3 +5,4 @@ export { default as HeroContainer } from './HeroContainer';
 export { default as Loader } from './Loader';
 export { default as RowContainer } from './RowContainer';
 export { default as MenuContainer } from './MenuContainer';
+export { default as CartContainer } from './CartContainer';
