@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { app } from '../firebase.config';
-import { motion } from 'framer-motion';
 import Logo from '../assets/img/logo.png';
 import Avatar from '../assets/img/avatar.png';
 import { FiShoppingCart, FiLogOut, FiPlus } from 'react-icons/fi';
