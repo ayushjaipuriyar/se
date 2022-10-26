@@ -12,14 +12,17 @@ import { actionType } from '../context/reducer';
 const Header = () => {
 	const firebaseAuth = getAuth(app);
 	const provider = new GoogleAuthProvider();
-	const [{ user, cartShow }, dispatch] = useStateValue();
+	const [{ user, cartShow, cartItems }, dispatch] = useStateValue();
 	const [isMenu, setisMenu] = useState(false);
 	const login = async () => {
 		if (!user) {
 			const {
 				user: { refreshToken, providerData },
 			} = await signInWithPopup(firebaseAuth, provider);
-			dispatch({ type: actionType.SET_USER, user: providerData[0] });
+			dispatch({
+				type: actionType.SET_USER,
+				user: providerData[0],
+			});
 			localStorage.setItem('user', JSON.stringify(providerData[0]));
 		} else {
 			setisMenu(!isMenu);
@@ -28,7 +31,6 @@ const Header = () => {
 	const logout = () => {
 		setisMenu(false);
 		localStorage.clear();
-		console.log('Clearing maybe');
 		dispatch({
 			type: actionType.SET_USER,
 			user: null,
@@ -70,12 +72,16 @@ const Header = () => {
 					</motion.ul>
 					<div
 						className='relative flex items-center justify-center'
-						onClick={showCart} 
+						onClick={showCart}
 					>
 						<FiShoppingCart className='text-textColor text-2xl cursor-pointer' />
-						<div className='absolute -top-2 -right-4 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
-							<p className='text-sm text-white font-semibold '>2</p>
-						</div>
+						{cartItems && cartItems.length > 0 && (
+							<div className='absolute -top-2 -right-4 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
+								<p className='text-sm text-white font-semibold '>
+									{cartItems.length}
+								</p>
+							</div>
+						)}
 					</div>
 					<div className='relative'>
 						<motion.img
@@ -92,16 +98,18 @@ const Header = () => {
 								exit={{ opacity: 0, scale: 0.6 }}
 								className='w-40 bg-gray-50  shadow-sl rounded-lg absolute flex flex-col top-12 right-0'
 							>
-								{user && user.email === 'ayushjaipuriyar21@gmail.com' && (
-									<Link to={'/createItem'}>
-										<p
-											className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'
-											onClick={() => setisMenu(false)}
-										>
-											New Item <FiPlus />
-										</p>
-									</Link>
-								)}
+								{user &&
+									(user.email === 'ayushjaipuriyar21@gmail.com' ||
+										user.email === 'ananay.gupta3@gmail.com') && (
+										<Link to={'/createItem'}>
+											<p
+												className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'
+												onClick={() => setisMenu(false)}
+											>
+												New Item <FiPlus />
+											</p>
+										</Link>
+									)}
 
 								<p className='px-4 py-2 flex items-center cursor-pointer gap-3 hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'>
 									Logout
@@ -119,9 +127,13 @@ const Header = () => {
 					onClick={showCart}
 				>
 					<FiShoppingCart className='text-textColor text-2xl cursor-pointer' />
-					<div className='absolute -top-2 -right-4 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
-						<p className='text-sm text-white font-semibold '>2</p>
-					</div>
+					{cartItems && cartItems.length > 0 && (
+						<div className='absolute -top-2 -right-4 w-5 h-5 rounded-full bg-cartNumBg flex items-center justify-center'>
+							<p className='text-sm text-white font-semibold '>
+								{cartItems.length}
+							</p>
+						</div>
+					)}
 				</div>
 				<Link to={'/'} className='flex items-center gap-2'>
 					<img src={Logo} className='w-10 object-cover' alt='Logo'></img>
@@ -142,13 +154,15 @@ const Header = () => {
 							exit={{ opacity: 0, scale: 0.6 }}
 							className='w-40 bg-gray-50  shadow-sl rounded-lg absolute flex flex-col top-12 right-0'
 						>
-							{user && user.email === 'ayushjaipuriyar21@gmail.com' && (
-								<Link to={'/createItem'}>
-									<p className='px-4 py-2 flex items-center cursor-pointer  hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'>
-										New Item <FiPlus />
-									</p>
-								</Link>
-							)}
+							{user &&
+								(user.email === 'ayushjaipuriyar21@gmail.com' ||
+									user.email === 'ananay.gupta3@gmail.com') && (
+									<Link to={'/createItem'}>
+										<p className='px-4 py-2 flex items-center cursor-pointer  hover:bg-slate-100 transition-all duration-100 ease-out text-textColor text-base'>
+											New Item <FiPlus />
+										</p>
+									</Link>
+								)}
 							<ul className='flex flex-col'>
 								<li
 									className='text-base text-headingColor hover:text-headingColor hover:bg-slate-100 duration-300 transition-all ease-in-out cursor-pointer px-4 py-2'
